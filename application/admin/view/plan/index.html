@@ -1,0 +1,54 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7 " style="margin-top: 5%">
+    <style type="text/css">
+        .onload{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            width:12px;
+        }
+    </style>
+    <div class="mws-panel-header">
+        <span class="mws-i-24 i-table-1">溯源方案</span>
+    </div>
+    <div class="mws-panel-body">
+        <table class="mws-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>板块</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>操作</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <?php foreach($planData as $v): ?>
+                <?php $i = explode("||",$v["src"]); ?>
+                <td>{$v["id"]}</td>
+                <td>{$v["part"]}</td>
+                <td>{$v["title"]}</td>
+                <td class="onload">{$v["content"],20|cut_str}</td>
+                <td>                       
+                    <div class="mws-panel-toolbar top clearfix">
+                        <ul>
+                            <li><a href="{:url('/admin/plan/upd',['id' => $v['id']])}" class="mws-ic-16 ic-edit">编辑</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tbody>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div class="mws-pagination clearfix" style="padding-top: 20px;">
+        {$planData->render()}
+    </div>      
+</div>
+{include file="../application/admin/view/index/footer.html" /}
+
+<script type="text/javascript">
+     //反选
+    function NoSelAll(){ 
+        $("input[name='ids[]']").each(function(){$(this).prop("checked",!this.checked);});
+    }
+</script>

@@ -1,0 +1,65 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/index/upd')}" method="post" enctype="multipart/form-data" >
+         <?php $i = explode("||",$indexData['src']);$j = explode("||",$indexData['title']);$k = explode("||",$indexData['content']); ?>
+         <div class="mws-panel grid_8">
+            <div class="mws-panel-header">
+                <span class="mws-i-24 i-pencil">编辑首页</span>
+            </div>
+            <div class="mws-panel-body">
+                    <input type="hidden" name="id" value="{$indexData['id']}" />
+                    <div class="mws-form-inline">
+                        <div class="mws-form-row">
+                            <label>板块</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="part" value="{$indexData['part']}" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>标题</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="title" value="{$indexData.title}"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>英文标题</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="title_en" value="{$indexData['title_en']}"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>上传图片</label>
+                            <div class="mws-form-item medium">
+                                <input type="file" class="mws-textinput" name="src"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row" style="height: 100px;width: 100%;">
+                            <input type="hidden" name="img_path" value="{$i[0]}" />
+                            <div class="pic-box" style="background-image:url(/upload/{$indexData.src});background-repeat: no-repeat;height: 100px;background-size: 10%;margin-left: 200px;">
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>内容</label>
+                            <div class="mws-form-item large">
+                                <textarea id="content" name="content">{$indexData.content}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="mws-button-row" style="">
+            <input type="submit" value="提交" class="mws-button green" />
+        </div>
+    </form>
+</div>    	
+
+
+{include file="../application/admin/view/index/footer.html" /}
+
+
+<script type="text/javascript">
+    
+    //初始化富文本编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('content',{initialFrameWidth:'770',initialFrameHeight:'300'});
+</script>

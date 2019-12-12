@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__STATIC__/home/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/newsContent.css">
+    <title>{$details.title}</title>
+</head>
+
+<body>
+<?php
+    include('./data/data_system.php');
+?>
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header-page w">
+            <a href="/" class="header-logo fl">
+                <i class="fl"></i>
+                <span class="fl">国安较真(广东)科技有限公司</span>
+            </a>
+            <ul class="header-nav fr">
+                <li><a href="/">首页</a></li>
+                <li><a href="{:url('home/trend/index')}">国安溯源</a></li>
+                <li><a href="{:url('home/about/index')}">关于我们</a></li>
+                <li><a href="{:url('home/news/index')}" class="active">新闻资讯</a></li>
+                <li>
+                    <!--<a href="#"><img src="__STATIC__/home/images/tu2@2x.png" alt=""></a>-->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- bannerImg -->
+    <div class="bannerImg">
+        <img src="__STATIC__/home/images/xx2@2x.png" alt="">
+    </div>
+
+    <!-- 新闻 -->
+    <div class="news w">
+        <div class="news-title">
+            <h3>{$details.title}</h3>
+            <span>{:date('Y-m-d H:i:s',$details.time)}</span>
+        </div>
+        <div class="content">
+            {$details.content}
+        </div>
+    </div>
+    <!-- 上下一篇 -->
+    <div class="up-down w clearfix">
+        <?php if(!empty($prev)){?>
+        <a class="up fl" href="{:url('/home/news/detail','id='.$prev.id)}">上一篇 <span>{$prev.title}</span></a>
+        <?php
+              }
+              if(!empty($next)){
+        ?>
+        <a class="down fr" href="{:url('/home/news/detail','id='.$next.id)}">下一篇 <span>{$next.title}</span></a>
+        <?php }?>
+    </div>
+
+    <!-- 底部 -->
+{include file='public/footer'}
+</body>
+
+</html>
+<script src="__STATIC__/home/js/jquery-1.12.2.js"></script>
+<script>
+    $(function () {
+        // 底部
+        $(".footer .icon").hover(function () {
+            $(this).prev().stop().fadeIn()
+            $(this).next().css("color", "#666")
+        }, function () {
+            $(this).prev().stop().fadeOut()
+            $(this).next().css({
+                "color": "#000",
+                "transition": "all 0.5s"
+            })
+
+        });
+        $(".footer .two").hover(function () {
+            $(this).stop().fadeIn()
+            $(this).next().next().css("color", "#666")
+        }, function () {
+            $(this).stop().fadeOut()
+            $(this).next().next().css({
+                "color": "#000",
+                "transition": "all 0.5s"
+            })
+
+        });
+    })
+</script>

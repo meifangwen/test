@@ -1,0 +1,40 @@
+<!-- 底部 -->
+<div class="footer">
+    <div class="footer-content w clearfix">
+        <div class="footer-l fl">
+            <h3>联系我们</h3>
+            <div class="msg">
+                <p>
+                    邮箱：{$arr['system']['email']}
+                </p>
+                <p>
+                    新浪微博：{$arr['system']['weibo']}
+                </p>
+                <p>
+                    联系方式：{$arr['system']['zx_phone']}
+                </p>
+            </div>
+        </div>
+        <div class="footer-r fr clearfix">
+            <div class="footer-r-kf fr">
+                <div class="two">
+                    <img src="/qrcode/{$arr['system']['qrcode']}" alt="">
+                </div>
+                <div class="icon"></div>
+                <p>官方客服微信</p>
+            </div>
+            <div class="footer-r-wx fr">
+                <div class="two">
+                    <img src="/wechat_public/{$arr['system']['wechat_public']}" alt="">
+                </div>
+                <div class="icon"></div>
+                <p>微信公众号</p>
+            </div>
+
+        </div>
+    </div>
+    <p class="footer-copy w">
+        <span>{$arr['system']['company']}</span>
+        <i>{$arr['system']['record']}</i>
+    </p>
+</div>

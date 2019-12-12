@@ -1,0 +1,29 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+	<div class="mws-panel-header">
+    	<span class="mws-i-24 i-plus">添加管理员</span>
+    </div>
+    <div class="mws-panel-body">
+    	<form class="mws-form" action="{:url('/admin/user/add')}" method="post">
+        	<div class="mws-form-inline">
+            	<div class="mws-form-row">
+                	<label>用户名</label>
+                	<div class="mws-form-item large">
+                    	<input type="text" class="mws-textinput" name="name" />
+                    </div>
+                </div>
+            	<div class="mws-form-row">
+                	<label>密码</label>
+                	<div class="mws-form-item large">
+                    	<input type="password" class="mws-textinput" name="password" />
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <input type="submit" value="提交" class="mws-button green mws-login-button" />
+                </div>
+            </div>
+        </form>
+    </div>    	
+</div>
+
+{include file="../application/admin/view/index/footer.html" /}   

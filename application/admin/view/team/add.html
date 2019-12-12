@@ -1,0 +1,44 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/team/add')}" method="post" enctype="multipart/form-data">
+         <div class="mws-panel grid_8">
+                <div class="mws-panel-header">
+                    <span class="mws-i-24 i-plus">添加成员</span>
+                </div>
+                <div class="mws-panel-body">
+                    <div class="mws-form-inline">
+                        <div class="mws-form-row">
+                            <label>姓名</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="name" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>职务</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="position"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>头像</label>
+                            <div class="mws-form-item medium">
+                                <input type="file" class="mws-textinput" name="img" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>简介</label>
+                            <div class="mws-form-item large">
+                                <textarea name="content" style="width: 780px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-button-row">
+                        <input type="submit" value="提交" class="mws-button green" />
+                    </div>
+                </div>      
+            </div>
+    </form>
+</div>    	
+
+
+{include file="../application/admin/view/index/footer.html" /}   

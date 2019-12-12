@@ -1,0 +1,50 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/team/upd')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$teamData['id']}" />
+         <div class="mws-panel grid_8">
+                <div class="mws-panel-header">
+                    <span class="mws-i-24 i-pencil">编辑成员</span>
+                </div>
+                <div class="mws-panel-body">
+                    <div class="mws-form-inline">
+                        <div class="mws-form-row">
+                            <label>姓名</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="name" value="{$teamData['name']}" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>职务</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="position" value="{$teamData['position']}" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>头像</label>
+                            <div class="mws-form-item medium">
+                                <input type="file" class="mws-textinput" name="img" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row" style="height: 100px;width: 100%;">
+                            <input type="hidden" name="img_path" value="{$teamData['img']}" />
+                            <div class="pic-box" style="background-image:url(/team/{$teamData['img']});background-repeat: no-repeat;height: 100px;background-size: 10%;margin-left: 200px;">
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>简介</label>
+                            <div class="mws-form-item large">
+                                <textarea name="content" style="width: 780px;">{$teamData['content']}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-button-row">
+                        <input type="submit" value="提交" class="mws-button green" />
+                    </div>
+                </div>      
+            </div>
+    </form>
+</div>      
+
+
+{include file="../application/admin/view/index/footer.html" /}   

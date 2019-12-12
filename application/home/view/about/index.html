@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__STATIC__/home/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/swiper.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/about.css">
+</head>
+
+<body>
+<!-- 头部 -->
+{include file='public/header'}
+<!-- 关于我们 -->
+<div class="about">
+    <div class="about-me w">
+        <div class="about-msg">
+            <h3>关于我们</h3>
+            <p>
+                国安较真（广东）科技有限公司是一家以互联网区块链技术应用为核心，通过自主研发的亚洲领先的
+                溯源技术和海量数据支撑的认证体系，为企业和用户搭建资金流、信息流和实物流有效融合的，线上
+                销售和线下服务为一体的分享型新零售综合性电商平台。
+            </p>
+            <!--<a href="#">LEARN MORE</a>-->
+        </div>
+
+    </div>
+</div>
+<!-- 企业文化 -->
+<div class="culture w clearfix">
+    <div class="culture-l fl">
+        <img src="__STATIC__/home/images/1@32x.png" alt="">
+    </div>
+    <div class="culture-r fl">
+        <h3>企业文化</h3>
+        <div class="culture-r-page">
+            <p>
+                诚信、成就，
+            </p>
+            <p>
+                专业、专注，
+            </p>
+            <p>
+                自信、自强，
+            </p>
+            <p>
+                共享、共盈，
+            </p>
+        </div>
+    </div>
+</div>
+<!-- 企业愿景 -->
+<div class="circulate" style="background: url('__STATIC__/home/images/1@222x.png') no-repeat;background-size: contain;">
+    <div class="circulate-content w">
+        <h3>企业愿景</h3>
+        <p>
+            致力于发展成为一家受人尊敬的、具有创造力和创新精神的科
+            技型企业构建全球化、标准化的溯源公共服务体系，打造行业
+            内最具价值和影响力的品牌！
+        </p>
+        <!--<a href="#">MORE</a>-->
+    </div>
+</div>
+<!-- 企业使命 -->
+<div class="mission w clearfix">
+    <div class="mission-l fl">
+        <div class="mission-l-b">
+            <img src="__STATIC__/home/images/xx33@2x.png" alt="">
+        </div>
+    </div>
+    <div class="mission-r fl">
+        <h3>企业使命</h3>
+        <p>食品溯源及公司最新活动集锦，尽在于此</p>
+        <div class="line"></div>
+        <p>
+            为国家分忧，为企业解困
+        </p>
+        <p>
+            为消费者造福，为经营者谋利
+        </p>
+        <!--<a href="#">MORE</a>-->
+    </div>
+
+</div>
+<!-- 企业目标  -->
+<div class="goal clearfix">
+    <div class="goal-content fr">
+        <h3>企业目标 </h3>
+        <div class="line"></div>
+        <p>
+            3年内服务100万家中小型企业，帮助其增加25%的毛利率
+        </p>
+        <p>3年内服务1亿名消费者，帮助其节省40%的生活成本
+        </p>
+        <p> 3年内解决1/10以上国人的食品安全问题</p>
+        <!--<a href="#">MORE</a>-->
+    </div>
+</div>
+<!-- 企业大事记 -->
+<div class="bigGreat">
+    <div class="bigGreat-t">
+        <h2>企业大事记</h2>
+        <div class="line"></div>
+    </div>
+    <div class="swiper-container bigGreat-s">
+        <div class="swiper-wrapper">
+            <?php foreach($events as $key => $value){?>
+            <div class="swiper-slide swiper-s">
+                <?php foreach($value as $k => $v){?>
+                <?php if($k<2){?>
+                <div class="swiper-s-page">
+                    <div class="page-radio">
+                        <div class="page-radio-n"></div>
+                    </div>
+                    <div class="page-msg">
+                        <h3><?php echo $v['date']?></h3>
+                        <p><?php echo $v['event']?></p>
+                        <div class="msg-san"></div>
+                    </div>
+                </div>
+                <?php }else{?>
+                <div class="swiper-s-page">
+                    <div class="page-msg">
+                        <h3><?php echo $v['date']?></h3>
+                        <p><?php echo $v['event']?></p>
+                        <div class="msg-san"></div>
+                    </div>
+                    <div class="page-radio">
+                        <div class="page-radio-n"></div>
+                    </div>
+                </div>
+                <?php }?>
+                <?php }?>
+            </div>
+            <?php }?>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+<!-- 经营理念 -->
+<div class="share-side">
+    <div class="share-side-content w">
+        <div class="share-side-content-title">
+            <h3>经营理念</h3>
+            <div class="line"></div>
+        </div>
+        <div class="share-side-content-page">
+            <div class="share-side-content-page-l"
+                 style="background: url('__STATIC__/home/images/1@2156x.png') no-repeat;background-size: contain;">
+                <div class="share-side-content-page-l-box">
+
+                </div>
+            </div>
+            <div class="share-side-content-page-r">
+                <div class="line"></div>
+                <p>
+                    共享产生财富，分享创造价值
+                </p>
+                <p>
+                    每位消费者，都可以成为经营者
+                </p>
+                <p>
+                    让创业和赚钱像呼吸应用简单而自然
+                </p>
+                <p>
+                    吃得安心 用得放心 赚得开心 活得舒心
+                </p>
+                <!--<a href="#">MORE</a>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- 底部 -->
+{include file='public/footer'}
+</body>
+
+</html>
+<script src="__STATIC__/home/js/jquery-1.12.2.js"></script>
+<script src="__STATIC__/home/js/swiper.js"></script>
+<script src="__STATIC__/home/js/about.js"></script>

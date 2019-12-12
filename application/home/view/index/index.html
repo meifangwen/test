@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__STATIC__/home/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/swiper.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/index.css">
+    <link rel="shortcut icon" href="__STATIC__/home/images/GAJZ_log@2x.png" type="image/x-icon">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=TKW03FVZFFb6B1k0qOZ2aD44AOeQcKEU">
+    </script>
+    <style>
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        .anchorBL {
+            display: none;
+        }
+
+        .share-side .share-side-content .share-side-content-page .share-side-content-page-l {
+            width: 560px;
+            height: 373px;
+            padding: 34px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--加载公共头部-->
+    {include file='public/header'}
+    <!-- 共享经济两个特点 -->
+    <div class="share w">
+        <div class="share-title">
+            <div class="share-title-line"></div>
+            <p class="share-title-one">{$data[1]['title']}</p>
+            <p class="share-title-two">{$data[1]['title_en']}</p>
+        </div>
+        <div class="share-content clearfix">
+            <div class="share-content-l fl "
+                style="background: url('<?php echo UPLOADS.$data[2]["src"]?>') no-repeat; background-size: contain;">
+                <div class="share-content-border"></div>
+            </div>
+            <div class="share-content-r fl">
+                <div class="share-content-r-t">
+                    <p>{$data[2]['title']}</p>
+                    <p>{$data[2]['title_en']}</p>
+                </div>
+                <div class="share-content-r-c">
+                    {$data[2]['content']}
+                </div>
+                <div class="share-content-r-b">
+                    <!--<a href="#">MORE</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="share-content2 clearfix">
+            <div class="share-content-r fr"
+                style=" background: url('<?php echo UPLOADS.$data[3]["src"];?>') no-repeat;background-size: contain;">
+                <div class="share-content-border"></div>
+            </div>
+            <div class="share-content-l fr">
+                <div class="share-content-r-t fr">
+                    <p>{$data[3]['title']}</p>
+                    <p>{$data[3]['title_en']}</p>
+                </div>
+                <div class="share-content-r-c fr">
+                    {$data[3]['content']}
+                </div>
+                <div class="share-content-r-b">
+                    <!--<a href="#">MORE</a>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 质量溯源方面 -->
+    <div class="quality clearfix">
+        <div class="quality-l fl">
+            <img src="<?php echo UPLOADS.$data[4]['src']?>" alt="">
+        </div>
+        <div class="quality-r fl">
+            <h2>{$data[4]['title']}</h2>
+            <p>{$data[4]['content']}</p>
+            <!--<a href="#">MORE</a>-->
+        </div>
+    </div>
+
+    <!-- 供需信息方面 -->
+    <div class="supply w clearfix">
+        <div class="supply-l fl">
+            <img src="<?php echo UPLOADS.$data[5]['src']?>" alt="">
+        </div>
+        <div class="supply-r fl">
+            <h3>{$data[5]['title']}</h3>
+            {$data[5]['content']}
+            <!--<a href="#">MORE</a>-->
+        </div>
+    </div>
+
+    <!-- 流通成本控制方面 -->
+    <div class="circulate" style="background: url(<?php echo UPLOADS.$data[6]['src']?>) no-repeat;background-size: contain;">
+        <div class="circulate-content w">
+            <h3>{$data[6]['title']}</h3>
+            {$data[6]['content']}
+            <!--<a href="#">MORE</a>-->
+        </div>
+    </div>
+
+    <!-- 分享经济方面 -->
+    <div class="share-side">
+        <div class="share-side-content w">
+            <div class="share-side-content-title">
+                <h3>{$data[7]['title']}</h3>
+                <div class="line"></div>
+            </div>
+            <div class="share-side-content-page">
+                <div class="share-side-content-page-l" style="background: url(<?php echo UPLOADS.$data[7]['src']?>) no-repeat;background-size: contain;">
+                    <div class="share-side-content-page-l-box">
+
+                    </div>
+                </div>
+                <div class="share-side-content-page-r">
+                    <div class="line"></div>
+                    {$data[7]['content']}
+                    <!--<a href="#">MORE</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系和地图 -->
+    <div class="relation">
+        <div id="allmap" class="allmap">
+        </div>
+        <div class="relation-r" style="background: url('__STATIC__/home/images/ju25@2x.png') no-repeat;background-size: contain;">
+            <form action="" id="msgForm">
+                <h3>CONTACT US</h3>
+                <input type="text" placeholder="FULL NAME" name="name">
+                <input type="number" placeholder="TELEPHONE" name="phone">
+                <textarea name="content" id="" cols="30" rows="10" placeholder="FEEDBACK" style="resize:none;" ></textarea>
+                <input type="button" value="SUBMISSION" id="msgBtn" onclick="sendMessage()">
+            </form>
+        </div>
+    </div>
+
+{include file='public/footer'}
+</body>
+
+</html>
+<script src="__STATIC__/home/js/jquery-1.12.2.js"></script>
+<script src="__STATIC__/home/js/index.js"></script>
+<script>
+    // 百度地图API功能
+    var lng = {$company_config.longitude};
+    var lat = {$company_config.latitude};
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(lng, lat);
+    map.centerAndZoom(point, 15);
+    var marker = new BMap.Marker(point); // 创建标注
+    map.addOverlay(marker); // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    map.setMapStyle({
+        style: 'grayscale'
+    });
+    // setTimeout(function(){
+    map.panTo(new BMap.Point(113.399531, 23.170093)); //两秒后移动到广州
+    // }, 0);
+    map.enableScrollWheelZoom();
+
+    function sendMessage(){
+        var data = $('#msgForm').serialize();
+
+        $.ajax({
+            url:'/home/index/ajaxSendMessage',
+            data:data,
+            dataType:'json',
+            type:'post',
+            success:function(res){
+                if(res.code==1){
+                    alert(res.msg);
+                    $('input[name="name"]').val("");
+                    $('input[name="phone"]').val("");
+                    $('textarea').val("");
+                    return false;
+                }
+                alert(res.msg);
+                return false;
+            }
+        })
+    }
+</script>

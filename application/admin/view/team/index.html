@@ -1,0 +1,89 @@
+{include file="../application/admin/view/index/heater.html" /}
+<form action="{:url('/admin/team/del')}" method="post">
+<div class="mws-panel grid_7 " style="margin-top: 5%">
+	<div class="mws-panel-header">
+    	<span class="mws-i-24 i-table-1">团队列表</span>
+    </div>
+    <div class="mws-panel-body">
+    	<div class="mws-panel-toolbar top clearfix">
+        	<ul>
+                <li><span class="mws-ic-16 ic-add" onclick="NoSelAll()">全选</span></li>
+                <li class="mws-ic-16 ic-accept" style="width:72px;background-color: #dddddd;height:35px;border:1px solid #ccc;"><input type="submit" name="deletesubmit" value="删除" onClick="return confirm('本操作不可恢复，确认删除？');" class="submit" style="line-height: 35px;padding-left: 20px;"></li>
+            	<li><a href="{:url('/admin/team/add')}" class="mws-ic-16 ic-add">添加</a></li>
+            </ul>
+        </div>
+        <table class="mws-table">
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>职务</th>
+                    <th>头像</th>
+                    <th>简介</th>
+                    <th>操作</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <?php foreach($teamData as $v): ?>
+                <tr class="gradeX">
+                    <td><input type="checkbox" name="ids[]" value="{$v['id']}"></td>
+                    <td>{$v["id"]}</td>
+                    <td>{$v["name"]}</td>
+                    <td>{$v["position"]}</td>
+                    <td ><img src="/team/{$v['img']}" style="height: 40px;"></td>
+                    <td>{$v["content"]}</td>
+                    <td class="center">
+                    	<div class="mws-panel-toolbar top clearfix">
+                    	    <ul>
+                            	<li>
+                                    <a href="{:url('/admin/team/upd',['id' => $v['id']])}" class="mws-ic-16 ic-edit" >编辑</a>
+                                </li>
+                            	<li class="titles" id="{$v['id']}">
+                                   <a href="{:url('/admin/team/del',['id' => $v['id']])}" class='mws-ic-16 ic-cross'>删除</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+               <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="mws-pagination clearfix" style="padding-top: 20px;">
+        {$teamData->render()}
+    </div>    	
+</div>
+</form>
+{include file="../application/admin/view/index/footer.html" /}       
+<script type="text/javascript">
+    // titles提交封号
+    
+    // $(".titles").click(function(e){
+    function titles(it){
+        var id = $(it).attr('id');
+        // console.log(id);
+        $.get("{:url('/admin/news/is_show')}",{"id":id},function(e){
+            // console.log(e);
+            if(e.code==1){
+                //1表示封号成功
+                $(it).parent().parent().parent().parent().find(".status").html("<span style='color: red;'>已隐藏</span>");
+
+                $(it).html("<a href='#' class='mws-ic-16 ic-accept'>首页显示</a>");
+                layer.msg(e.msg);
+            }else{
+                //否则表示解封成功
+                $(it).parent().parent().parent().parent().find(".status").html("已显示");
+                
+                $(it).html("<a href='#' class='mws-ic-16 ic-cross'>首页隐藏</a>");
+                layer.msg(e.msg);
+
+            }
+        },"json")
+    }
+
+    //反选
+    function NoSelAll(){ 
+        $("input[name='ids[]']").each(function(){$(this).prop("checked",!this.checked);});
+    }
+</script>

@@ -1,0 +1,111 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/plan/upd')}" method="post" enctype="multipart/form-data" >
+         <?php $i = explode("||",$planData['src']);$j = explode("||",$planData['title']);$k = explode("||",$planData['content']);$p = explode("||",$planData['part']); ?>
+         <div class="mws-panel grid_8">
+            <div class="mws-panel-header">
+                <span class="mws-i-24 i-pencil">编辑</span>
+            </div>
+            <div class="mws-panel-body"  style="width: 750px; float: left;">
+                    <input type="hidden" name="id" value="{$planData['id']}" />
+                    <div class="mws-form-inline">
+                        <div class="mws-form-row">
+                            <label>中文板块</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" value="{$p[0]}" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>中文标题</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="title[]" value="{$j[0]}"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>中文上传文件</label>
+                            <div class="mws-form-item medium">
+                                <input type="file" class="mws-textinput" name="src"  size=200000/>
+                            </div>
+                        </div>
+                        <?php if(substr($i[0],strrpos($i[0], '.')) == ".mp4"): ?>;
+                        <div class="mws-form-row" style="height: 250px;width: 100%;padding-left: 200px;">
+                            <input type="hidden" name="img_path[]" value="{$i[0]}" />
+                            <video id='my-video' class='video-js' controls preload='auto' width="200px" height='250px' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+                                <source src='/video/{$i[0]}' type='video/mp4'>
+                            </video>
+                        </div>
+                        <?php else: ?>
+                        <div class="mws-form-row" style="height: 250px;width: 100%;">
+                            <input type="hidden" name="img_path[]" value="{$i[0]}" />
+                            <div class="pic-box" style="background-image:url(/video/{$i[0]});background-repeat: no-repeat;max-width:100px;height:100px;background-size: 100%;margin:auto;">
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <div class="mws-form-row">
+                            <label>中文内容</label>
+                            <div class="mws-form-item large">
+                                <textarea id="content" name="content[]">{$k[0]}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-panel-body" style="width: 750px; float: right;">
+                    <div class="mws-form-inline">
+                        <div class="mws-form-row">
+                            <label>英文板块</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" value="{$p[1]}" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>英文标题</label>
+                            <div class="mws-form-item small">
+                                <input type="text" class="mws-textinput" name="title[]" value="{$j[1]}"/>
+                            </div>
+                        </div>
+                        <div class="mws-form-row">
+                            <label>英文上传文件</label>
+                            <div class="mws-form-item medium">
+                                <input type="file" class="mws-textinput" name="video" size=200000/>
+                            </div>
+                        </div>
+                        <?php if(substr($i[1],strrpos($i[1], '.')) == ".mp4"): ?>;
+                        <div class="mws-form-row" style="height: 250px;width: 100%;padding-left: 200px;">
+                            <input type="hidden" name="img_path[]" value="{$i[1]}" />
+                            <video id='my-video' class='video-js' controls preload='auto' width="200px" height='250px' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+                                <source src='/video/{$i[1]}' type='video/mp4'>
+                            </video>
+                        </div>
+                        <?php else: ?>
+                        <div class="mws-form-row" style="height: 250px;width: 100%;">
+                            <input type="hidden" name="img_path[]" value="{$i[1]}" />
+                            <div class="pic-box" style="background-image:url(/video/{$i[1]});background-repeat: no-repeat;max-width:100px;height:100px;background-size: 100%;margin:auto;">
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <div class="mws-form-row">
+                            <label>英文内容</label>
+                            <div class="mws-form-item large">
+                                <textarea id="contents" name="content[]">{$k[1]}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+        </div>
+        <div class="mws-button-row" style="">
+            <input type="submit" value="提交" class="mws-button green" />
+        </div>
+    </form>
+</div>    	
+
+
+{include file="../application/admin/view/index/footer.html" /}
+
+
+<script type="text/javascript">
+    
+    //初始化富文本编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('content',{initialFrameWidth:'500px',initialFrameHeight:180});
+    var ue = UE.getEditor('contents',{initialFrameWidth:'500px',initialFrameHeight:180});
+</script>

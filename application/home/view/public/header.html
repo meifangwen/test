@@ -1,0 +1,36 @@
+<?php
+    include('./data/data_system.php');
+?>
+<title>{$arr['system']['web_name']}</title>
+<!-- 头部 -->
+<div class="header">
+    <div class="header-page w">
+        <a href="/" class="header-logo fl">
+            <i class="fl"></i>
+            <span class="fl">国安较真(广东)科技有限公司</span>
+        </a>
+        <ul class="header-nav fr">
+            <li><a href="/" {if condition='$current eq Index'}class="active"{/if}>首页</a></li>
+            <li><a href="{:url('home/trend/index')}" {if condition='$current eq Trend'}class="active"{/if}>国安溯源</a></li>
+            <!--<li><a href="{:url('home/about/index')}" <?php if($current=='About' || $current=='News'){echo "class='active'";}  ?> >关于我们</a></li>-->
+            <li><a href="{:url('home/about/index')}" {if condition='$current eq About'}class="active"{/if} >关于我们</a></li>
+            <li><a href="{:url('home/news/index')}" {if condition='$current eq News'}class="active"{/if}>新闻资讯</a></li>
+            <li>
+                <!--<a href="#"><img src="__STATIC__/home/images/tu2@2x.png" alt=""></a>-->
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- banner -->
+<div class="swiper-container banner">
+    <div class="swiper-wrapper">
+        <?php foreach ($banner as $key => $value) {?>
+        <div class="swiper-slide"><img src="<?php echo UPLOADS.$value['src']?>" alt=""></div>
+        <?php }?>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+</div>
+<!--加载滑动js-->
+<script src="__STATIC__/home/js/swiper.js"></script>

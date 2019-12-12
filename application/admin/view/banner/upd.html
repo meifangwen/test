@@ -1,0 +1,180 @@
+{include file="../application/admin/view/index/heater.html" /}
+
+<link rel="stylesheet" type="text/css" href="{:config('static_admin')}/css/lib/webuploader/webuploader.css"/>
+<link rel="stylesheet" type="text/css" href="{:config('static_admin')}/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="{:config('static_admin')}/css/H-ui.admin.css" />
+
+<script type="text/javascript" src="{:config('static_admin')}/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="{:config('static_admin')}/js/H-ui.admin.page.js"></script> 
+<script type="text/javascript" src="{:config('static_admin')}/css/lib/webuploader/webuploader.min.js"></script> 
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/banner/upd')}" method="post">
+        <input type="hidden" name="id" value="{$bannerData['id']}" />
+        <div class="mws-panel grid_8">
+            <div class="mws-panel-header">
+                <span class="mws-i-24 i-pencil">编辑幻灯片</span>
+            </div>
+            <div class="mws-panel-body">
+                <div class="mws-form-inline">
+                    <div class="mws-form-row">
+                        <label style="margin-right: 32px;">标题</label>
+                        <div class="mws-form-item small">
+                            <input type="text" class="mws-textinput" name="title" value="{$bannerData['title']}"/>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label >上传组图：</label>
+                        <input id="pics" name="img_path" type="hidden"  >
+                        <input type="hidden" name="src[]" value=""  >
+                        <div class="formControls col-xs-8 col-sm-9">
+                            <div class="uploader-thum-container">
+                                <div id="fileList2" class="uploader-list">
+                                    <?php if(!empty($img_path)): ?>
+                                    <?php foreach($img_path as $v): ?> 
+                                    <div class="item editpic  pb-10">
+                                        <div class="pic-box" style="background-image:url(/upload/{$v})" ></div>
+                                        <input type="hidden" name="src[]" value="{$v}" vid="{$bannerData['id']}" >
+                                        <div class="file-panel">
+                                            <span class="cancel"  path="{$v}" id="{$bannerData['id']}" >删除</span>
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div id="filePicker1">选择图片</div>
+                                <div id="btn-star2" class="btn btn-default btn-uploadstar radius ml-10">开始上传</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label>幻灯类型</label>
+                        <div class="mws-form-item clearfix" style="padding-left: 15px;width:8%;">
+                            <select name="type" id="">
+                                <option value="index">首页幻灯</option>
+                                <option value="suo">溯源幻灯</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label>是否显示</label>
+                        <div class="mws-form-item clearfix">
+                            <ul class="mws-form-list inline">
+                                <li><input type="radio" value="0" name="is_show" checked="checked" /> <label>显示</label></li>
+                                <li><input type="radio"  value="1" name="is_show"  /> <label>不显示</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-button-row" style="overflow: hidden;">
+                    <input type="submit" value="提交" class="mws-button green" style="float: left;"/>
+                </div>
+            </div>      
+        </div>
+    </form>
+</div>    	
+
+{include file="../application/admin/view/index/footer.html" /}   
+<script type="text/javascript">
+$(function(){
+   $('.skin-minimal input').iCheck({
+     checkboxClass: 'icheckbox-blue',
+     radioClass: 'iradio-blue',
+     increaseArea: '20%'
+   });
+   var obj1 = {
+       filelist:"fileList",
+       btn: "btn-star",
+       pik:"filePicker",
+     bkid:"pic",
+     iffile:0,
+     filenum:10
+   }
+   var obj2 = {
+       filelist:"fileList2",
+       btn: "btn-star2",
+       pik:"filePicker1",
+     bkid:"pics",
+     iffile:0,
+     filenum:10
+   }
+   
+   //修改图片
+   $(".editpic").on( 'mouseenter', function() {
+     $(this).find('.file-panel').stop().animate({height: 30});
+   });
+   
+   $(".editpic").on( 'mouseleave', function() {
+     $(this).find('.file-panel').stop().animate({height: 0});
+   });
+   
+   var rotation=0;
+   $(".editpic").find('.file-panel').on( 'click', 'span', function() {
+     supportTransition = (function(){
+       var s = document.createElement('p').style,
+         r = 'transition' in s ||
+             'WebkitTransition' in s ||
+             'MozTransition' in s ||
+             'msTransition' in s ||
+             'OTransition' in s;
+       s = null;
+       return r;
+     })();
+     
+     var index = $(this).index(),
+       file = $(this).parent().parent().find('input').val(),
+       id = $(this).parent().parent().find('input').attr('vid'),
+       deg;
+
+     switch ( index ) {
+       case 0:
+         removeEeitFile(file,id);
+         $(this).parent().parent().remove();
+         return;
+   
+       case 1:
+         rotation += 90;
+         break;
+   
+       case 2:
+         rotation -= 90;
+         break;
+     }
+   
+     if ( supportTransition ) {
+       deg = 'rotate(' + rotation + 'deg)';
+       $(this).parent().parent().find('.pic-box').css({
+         '-webkit-transform': deg,
+         '-mos-transform': deg,
+         '-o-transform': deg,
+         'transform': deg
+       });
+     } else {
+       $(this).parent().parent().find('.pic-box').css( 'filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+ (~~((rotation/90)%4 + 4)%4) +')');
+     }
+   });  
+   
+   function removeEeitFile(file,id){
+
+    $.ajax({
+     type: "POST",
+      url: "/admin/banner/delpic",
+     data: {
+    
+       'url':file,
+       'id':id,
+
+     },
+     async:false,
+     success: function(result) {
+       obj1.filenum++;
+       obj2.filenum++;
+     }
+    });     
+   }  
+        
+   uploadPic(obj1);
+   uploadPic(obj2);
+
+});
+
+</script>

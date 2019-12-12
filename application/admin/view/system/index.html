@@ -1,0 +1,156 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7" style="margin-top: 5%;">
+    <form class="mws-form" action="{:url('/admin/system/index')}" method="post" enctype="multipart/form-data">
+         <div class="mws-panel grid_8">
+                <div class="mws-panel-header">
+                    <span class="mws-i-24 i-list">参数设置</span>
+                </div>
+                <div class="mws-panel-body">
+                        <input type="hidden" name="id" value="1" />
+                        <div class="mws-form-inline">
+                            <div class="mws-form-row">
+                                <label>网站名称</label>
+                                <div class="mws-form-item small">
+                                    <input type="text" class="mws-textinput" name="web_name" value="{$systemData['web_name']}"/>
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站Logo</label>
+                                <div class="mws-form-item medium">
+                                    <input type="file" class="mws-textinput" name="logo"/>
+                                </div>
+                            </div>
+                            <div class="mws-form-row" style="height: 70px;width: 100%;">
+                                <input type="hidden" name="img_path" value="{$systemData['logo']}" />
+                                <div class="pic-box" style="background-image:url(/logo/{$systemData['logo']});background-repeat: no-repeat;height: 100px;background-size: 10%;margin-left: 200px;">
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站描述</label>
+                                <div class="mws-form-item large">
+                                    <textarea id="content" name="describe" style="width: 800px;">{$systemData['describe']}</textarea>
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站邮箱</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="email" value="{$systemData['email']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>qq</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="qq" value="{$systemData['qq']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站联系方式</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="phone" value="{$systemData['phone']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>咨询电话</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="zx_phone" value="{$systemData['zx_phone']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>微博</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="weibo" value="{$systemData['weibo']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>公司经度</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="longitude" value="{$systemData['longitude']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">  
+                                <label>公司纬度</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="latitude" value="{$systemData['latitude']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>公司名称</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="company" value="{$systemData['company']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>公司地址</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="address" value="{$systemData['address']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站备案号</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="record" value="{$systemData['record']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站SEO</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="seo" value="{$systemData['seo']}" />
+                                </div>
+                            </div> 
+                            <div class="mws-form-row">
+                                <label>官方客服微信</label>
+                                <div class="mws-form-item medium">
+                                    <input type="file" class="mws-textinput" name="qrcode" />
+                                </div>
+                            </div>
+                             <div class="mws-form-row" style="height: 70px;width: 100%;">
+                                <input type="hidden" name="qrcode_path" value="{$systemData['qrcode']}" />
+                                <div class="pic-box" style="background-image:url(/qrcode/{$systemData['qrcode']});background-repeat: no-repeat;height: 100px;background-size: 5%;margin-left: 200px;">
+                                </div>
+                            </div>
+
+                            <div class="mws-form-row">
+                                <label>网站微信公众号</label>
+                                <div class="mws-form-item medium">
+                                    <input type="file" class="mws-textinput" name="wechat_public" />
+                                </div>
+                            </div>
+                             <div class="mws-form-row" style="height: 70px;width: 100%;">
+                                <input type="hidden" name="wechat_path" value="{$systemData['wechat_public']}" />
+                                <div class="pic-box" style="background-image:url(/wechat_public/{$systemData['wechat_public']});background-repeat: no-repeat;height: 100px;background-size: 5%;margin-left: 200px;">
+                                </div>
+                            </div>
+
+                            <div class="mws-form-row">
+                                <label>网站微信</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="wechat" value="{$systemData['wechat']}" />
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站状态</label>
+                                <div class="mws-form-item clearfix">
+                                    <ul class="mws-form-list inline">
+                                        <li><input type="radio"  value="0" name="web_close" {$systemData["web_close"] == 0 ? "checked" : ""} /><label>开启</label></li>
+                                        <li><input type="radio" value="1" name="web_close"  {$systemData["web_close"] == 1 ? "checked" : ""}/> <label>关闭</label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mws-form-row">
+                                <label>网站站点关闭说明</label>
+                                <div class="mws-form-item medium">
+                                    <input type="text" class="mws-textinput" name="close_desc" value="{$systemData['close_desc']}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mws-button-row" style="overflow: hidden;">
+                            <input type="submit" value="提交" class="mws-button green" style="float: left;"/>
+                        </div>
+                    </form>
+                </div>      
+            </div>
+    </form>
+</div>    	
+
+
+{include file="../application/admin/view/index/footer.html" /}

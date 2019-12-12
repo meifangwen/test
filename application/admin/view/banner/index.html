@@ -1,0 +1,97 @@
+{include file="../application/admin/view/index/heater.html" /}
+<form action="{:url('/admin/banner/del')}" method="post">
+<div class="mws-panel grid_7 " style="margin-top: 5%">
+	<div class="mws-panel-header">
+    	<span class="mws-i-24 i-table-1">幻灯片管理列表</span>
+    </div>
+    <div class="mws-panel-body">
+    	<div class="mws-panel-toolbar top clearfix">
+        	<ul>
+                <li><span class="mws-ic-16 ic-add" onclick="NoSelAll()">全选</span></li>
+                <li class="mws-ic-16 ic-accept" style="width:72px;background-color: #dddddd;height:35px;border:1px solid #ccc;"><input type="submit" name="deletesubmit" value="删除" onClick="return confirm('本操作不可恢复，确认删除？');" class="submit" style="line-height: 35px;padding-left: 20px;"></li>
+            	<li><a href="{:url('/admin/banner/add')}" class="mws-ic-16 ic-add">添加</a></li>
+            </ul>
+        </div>
+        <table class="mws-table">
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>图片预览</th>
+                    <th>是否显示</th>
+                    <th>日期时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <?php if(!empty($bannerData)): ?>
+                <?php foreach($bannerData as $v):   ?>  
+                <tr class="gradeX">
+                    <td><input type="checkbox" name="ids[]" value="{$v['id']}"></td>
+                    <td>{$v["id"]}</td>
+                    <td>{$v["title"]}</td>
+                    <td>
+                    <?php $i=explode(",",$v['src']); ?>
+                        <a href="/upload/{$i[0]}" target="black">
+                            <img src="/upload/{$i[0]}" style="width: auto;height: 30px;padding: 1px;">
+                        </a>
+                    </td>
+                    <td class="status">{$v["is_show"]==0?"已显示":"<span style='color: red;'>不显示</span>"}</td>
+                    <td>{:date("Y-m-d H:i:s",$v["datetime"])}</td>
+                    <td class="center">
+                        <div class="mws-panel-toolbar top clearfix">
+                            <ul>
+                                <li>
+                                    <a href="{:url('/admin/banner/upd',['id' => $v['id']])}" class="mws-ic-16 ic-edit" style="font-size: 12px;">编辑</a>
+                                </li>
+                                <li class="titles"  onclick="titles(this);" id="{$v['id']}">
+                                    {$v["is_show"] == 0 ? "<a href='#' class='mws-ic-16 ic-cross' >隐藏</a>" : "<a href='#' class='mws-ic-16 ic-accept'>显示</a>"}
+                                </li>
+                                <li class="titles" id="{$v['id']}">
+                                    <a href="{:url('/admin/banner/del',['id' => $v['id']])}" class='mws-ic-16 ic-cross'>删除</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="mws-pagination clearfix" style="padding-top: 20px;">
+        {$bannerData->render()}
+    </div>    	
+</div>
+</form>
+{include file="../application/admin/view/index/footer.html" /}       
+<script type="text/javascript">
+
+    // titles提交封号
+    function titles(it){
+        var id = $(it).attr('id');
+        // console.log(id);
+        $.get("{:url('/admin/banner/is_show')}",{"id":id},function(e){
+            // console.log(e);
+            if(e.code==1){
+                //1表示封号成功
+                $(it).parent().parent().parent().parent().find(".status").html("<span style='color: red;'>隐藏</span>");
+
+                $(it).html("<a href='#' class='mws-ic-16 ic-accept'>显示</a>");
+                layer.msg(e.msg);
+            }else{
+                //否则表示解封成功
+                $(it).parent().parent().parent().parent().find(".status").html("显示");
+                
+                $(it).html("<a href='#' class='mws-ic-16 ic-cross'>隐藏</a>");
+                layer.msg(e.msg);
+            }
+        },"json")
+    }
+
+    //反选
+    function NoSelAll(){ 
+        $("input[name='ids[]']").each(function(){$(this).prop("checked",!this.checked);});
+    }
+</script>

@@ -1,0 +1,69 @@
+{include file="../application/admin/view/index/heater.html" /}
+<div class="mws-panel grid_7 " style="margin-top: 5%">
+    <div class="mws-panel-header">
+        <span class="mws-i-24 i-table-1">首页内容管理列表<i style="color:red;">(一个标题属于一个版块)</i></span>
+    </div>
+    <div class="mws-panel-body">
+<!--         <div class="mws-panel-toolbar top clearfix">
+            <ul>
+                <li><a href="{:url('/admin/news/add')}" class="mws-ic-16 ic-accept">添加</a></li>
+            </ul>
+        </div> -->
+        <table class="mws-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>标题图片</th>
+                    <th>内容</th>
+                    <th style="width: 73px;">操作</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <?php foreach($indexData as $v): ?>
+                <td>{$v["id"]}</td>
+                <td>{$v["title"]}</td>
+                <td style="width: 70px;">
+                    <a href="/upload/{$v['src']}" target="black"><img src="/upload/{$v['src']}" style="height: 20px;margin-right: 10px;"></a>
+                </td>
+                <td  class="onload">{$v["content"],20|cut_str}</td>
+                <td>                       
+                    <div class="mws-panel-toolbar top clearfix">
+                        <ul>
+                            <li><a href="{:url('/admin/index/upd',['id' => $v['id']])}" class="mws-ic-16 ic-edit">编辑</a></li>
+                             <li class="titles"  onclick="titles(this);" id="">
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tbody>
+            <?php endforeach; ?>
+        </table>
+    </div>      
+</div>
+{include file="../application/admin/view/index/footer.html" /}       
+<script type="text/javascript">
+
+    function titles(it){
+        var id = $(it).attr('id');
+        // console.log(id);
+        $.get("{:url('/admin/news/is_show')}",{"id":id},function(e){
+            // console.log(e);
+            if(e.code==1){
+                //1表示封号成功
+                $(it).parent().parent().parent().parent().find(".status").html("<span style='color: red;'>已隐藏</span>");
+
+                $(it).html("<a href='#' class='mws-ic-16 ic-accept'>首页显示</a>");
+                layer.msg(e.msg);
+            }else{
+                //否则表示解封成功
+                $(it).parent().parent().parent().parent().find(".status").html("已显示");
+                
+                $(it).html("<a href='#' class='mws-ic-16 ic-cross'>首页隐藏</a>");
+                layer.msg(e.msg);
+
+            }
+        },"json")
+    }
+
+</script>

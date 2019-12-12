@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__STATIC__/home/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/swiper.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/national.css">
+</head>
+
+<body>
+<!--加载公共头部-->
+{include file='public/header'}
+<!-- 从农田到餐桌 -->
+<div class="cropland clearfix">
+    <div class="cropland-r fr" style="background: url(<?php echo VIDEO.$data[1]['src']?>) no-repeat;
+        background-size: contain;"></div>
+    <div class="cropland-l fr">
+        <h3>{$data[1]['title']}</h3>
+        {$data[1]['content']}
+    </div>
+</div>
+<!-- 四个溯源 -->
+<div class="four-trace clearfix">
+    <div class="one fl" style="background: url(<?php echo VIDEO.$data[2]['src']?>) no-repeat;
+        background-size: cover;">
+        <h3>{$data[2]['title']}</h3>
+        {$data[2]['content']}
+    </div>
+    <div class="one fl" style="background: url(<?php echo VIDEO.$data[3]['src']?>) no-repeat;
+        background-size: cover;">
+        <h3>{$data[3]['title']}</h3>
+        {$data[3]['content']}
+    </div>
+    <div class="one fl" style="background: url(<?php echo VIDEO.$data[4]['src']?>) no-repeat;
+        background-size: cover;">
+        <h3>{$data[4]['title']}</h3>
+        {$data[4]['content']}
+    </div>
+    <div class="one fl" style="background: url(<?php echo VIDEO.$data[5]['src']?>) no-repeat;
+        background-size: cover;">
+        <h3>{$data[5]['title']}</h3>
+        {$data[5]['content']}
+    </div>
+</div>
+<!-- 团队 -->
+<div class="team clearfix" style="background: url('__STATIC__/home/images/mwQ@2x.png') no-repeat;
+    background-size:cover;">
+    <div class="ots fl">
+        <h2>01</h2>
+        <h3>技术团队</h3>
+        <p>原支付宝开发团队，拥有全亚洲最先进的溯源技术</p>
+    </div>
+    <div class="ots fl">
+        <h2>02</h2>
+        <h3>服务保障</h3>
+        <p>云滇律师事务所作为法律顾问</p>
+    </div>
+    <div class="ots fl">
+        <h2>03</h2>
+        <h3>团队协作</h3>
+        <p>高度团结的队伍，互相扶持的市场</p>
+    </div>
+
+</div>
+<!-- 信息 -->
+<div class="msg-l w">
+    <div class="msg-t clearfix">
+        <div class="msg-t-l fl">
+            <img src="<?php echo VIDEO.$data[6]['src']?>" alt="">
+        </div>
+        <div class="msg-t-r fl">
+            <h3>{$data[6]['title']}</h3>
+            {$data[6]['content']}
+        </div>
+    </div>
+    <div class="msg-b clearfix">
+        <div class="msg-b-l fl">
+            <h3>{$data[7]['title']}</h3>
+            {$data[7]['content']}
+        </div>
+        <div class="msg-b-r fl">
+            <img src="<?php echo VIDEO.$data[7]['src']?>" alt="">
+        </div>
+
+    </div>
+</div>
+<!-- 食品溯源意义 -->
+<div class="meaning" style="background: url(<?php echo VIDEO.$data[8]['src']?>) no-repeat;background-size: cover;">
+    <div class="line-box">
+        <div class="line-title">
+            <h3>{$data[8]['title']}</h3>
+            <div class="line"></div>
+        </div>
+        <div class="line-content clearfix">
+            <div class="line-content-l fl">
+                <h3>{$data[9]['title']}</h3>
+                <div class="line"></div>
+                {$data[9]['content']}
+            </div>
+            <div class="line-content-l fl">
+                <h3>{$data[10]['title']}</h3>
+                <div class="line"></div>
+                {$data[10]['content']}
+            </div>
+            <div class="line-content-l fl">
+                <h3>{$data[11]['title']}</h3>
+                <div class="line"></div>
+                {$data[11]['content']}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 溯源模式 -->
+<div class="pattern">
+    <div class="pattern-t w">
+        <div class="pattern-t-title">
+            <h2>溯源模式</h2>
+            <div class="line"></div>
+        </div>
+        <div class="pattern-b-content clearfix">
+            <div class="pattern-t-content-line-box fl">
+                <div class="pattern-t-content-line-l">
+                    <h3>{$data[12]['title']}</h3>
+                    <div class="line"></div>
+                    {$data[12]['content']}
+                </div>
+            </div>
+            <div class="pattern-t-content-line-r fl">
+                <img src="<?php echo VIDEO.$data[12]['src']?>" alt="">
+            </div>
+        </div>
+        <div class="pattern-b-content clearfix">
+            <div class="pattern-t-content-line-box fr">
+                <div class="pattern-t-content-line-l">
+                    <h3>{$data[13]['title']}</h3>
+                    <div class="line"></div>
+                    {$data[13]['content']}
+                </div>
+            </div>
+            <div class="pattern-t-content-line-r fr">
+                <img src="<?php echo VIDEO.$data[13]['src']?>" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部 -->
+{include file='public/footer'}
+</body>
+
+</html>
+<script src="__STATIC__/home/js/swiper.js"></script>
+<script src="__STATIC__/home/js/jquery-1.12.2.js"></script>
+<script src="__STATIC__/home/js/national.js"></script>
